@@ -9,12 +9,10 @@ const { mongoose } = require('./database');
 // Settings
 app.set('port', process.env.PORT || 3200);
 
-// Middlewares
-if(env == 'DEV'){
-    app.use(cors({origin: 'http://localhost:4200'}));
-}else{
-    app.use(cors({origin: 'https://proyect-cv-angular.herokuapp.com/'}));
-}
+// Middlewares    FIX!!
+//app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors({origin: 'https://proyect-cv-angular.herokuapp.com/'}));
+
 app.use(express.json());
 
 // Routes
