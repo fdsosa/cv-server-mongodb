@@ -2,13 +2,19 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
+const env = process.env.ENV || 'DEV';
+
 const { mongoose } = require('./database');
 
 // Settings
 app.set('port', process.env.PORT || 3200);
 
 // Middlewares
-app.use(cors({origin: 'http://localhost:4200'}));
+if(env == 'DEV'){
+    app.use(cors({origin: 'http://localhost:4200'}));
+}else{
+    app.use(cors({origin: 'https://proyect-cv-angular.herokuapp.com/'}));
+}
 app.use(express.json());
 
 // Routes
